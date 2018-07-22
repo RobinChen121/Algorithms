@@ -1,10 +1,7 @@
 package chapter2;
 
 import java.util.Arrays;
-
-import umontreal.ssj.randvar.UniformIntGen;
-import umontreal.ssj.rng.MRG32k3aL;
-import umontreal.ssj.rng.RandomStream;
+import java.util.Random;
 
 /**
 *@author: Zhen Chen
@@ -16,16 +13,16 @@ import umontreal.ssj.rng.RandomStream;
 public class QuickSort {
 	
 	/**
-	 *  shuffle an array before sorting,
+	 *  shuffle an array before sorting in quick sort,
 	 *  eliminate input dependent 
 	 *  
 	 * @param a
 	 * @return
 	 */
 	static void shuffle(double[] a) {
-		RandomStream stream = new MRG32k3aL();
-		for (int i = 0; i< a.length; i++) {
-			int j = UniformIntGen.nextInt(stream, 0, i);
+		Random random = new Random();
+		for (int i = 0; i< a.length; i++) {		
+			int j = random.nextInt(i + 1);
 			double temp = a[i];
 			a[i] = a[j];
 			a[j] = temp;
